@@ -4,15 +4,16 @@
     
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
+                <a href="{{ '/'' | relative_url }}"><img src="{{ '/assets/images/logo.png' | relative_url }}" class="rounded me-3" style="max-width:40px;" alt="Logo" /></a>
                 <a class="navbar-brand" rel="author" href="{{ '/'' | relative_url }}">{{ site.title | escape }}</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 order-3">
-                            {% for page in sorted_pages %}
-                                <!-- display links in navbar except for home (as it is already displayed on the left of the header)-->
+                            <!-- display links in navbar except for home (as it is already displayed on the left of the header)-->
                                 <!-- todo: find out why the for-loop goes 8 times instead of 5 times/number of actual pages-->
+                            {% for page in sorted_pages %}
                                 {% if forloop.index != 4 %}
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{page.url}}">{{page.title}}</a>
