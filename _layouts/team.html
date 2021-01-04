@@ -2,21 +2,21 @@
 layout: default
 ---
 
-<h1 class="h1 my-4">{{ page.title }}</h1>
+<h1 class="h1 mb-4">{{ page.title }}</h1>
 {% for member in site.data.members %}
     <div class="row mb-4">
-        <div class="col-sm-3">
+        <div class="col-sm-3 text-center">
             {% if member.photo == "none" %}
                 <img src="/assets/images/placeholderportrait.png" class="rounded-circle" style="max-width:200px;width:100%;" alt="A placeholder for a portrait of the team member" />
             {% else %}
                 <img src="{{ member.photo.url }}" class="rounded-circle" style="max-width:200px;width:100%;" alt="{{ member.photo.alt }}" />
             {% endif %}
-            <li class="d-inline-block">
+            <li class="d-inline-block mx-2">
                 {% for link in member.links %}
                     {% if link.type == "email" %}
-                        <a href="mailto: {{ link.url }}">{{ link.title }}</a>
+                        <a class="text-decoration-none p-1" href="mailto: {{ link.url }}">{{ link.title }}</a>
                     {% else %}
-                        <a href="{{ link.url }}">{{ link.title }}</a>
+                        <a class="text-decoration-none p-1" href="{{ link.url }}">{{ link.title }}</a>
                     {% endif %}
                 {% endfor %}
             </li>
@@ -32,9 +32,11 @@ layout: default
 
 <div class="row my-4">
     <h2 class="h2">Alumni</h2>
-    <ul>
-        {% for alumnus in site.data.alumni %}
-            <li>{{ alumnus.name }}</li>
-        {% endfor %}
-    </ul>
+    <div class="column ml-3">
+        <ul>
+            {% for alumnus in site.data.alumni %}
+                <li>{{ alumnus.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
