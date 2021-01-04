@@ -5,6 +5,28 @@ layout: default
 <h1 class="h1 mb-4">{{ page.title }}</h1>
 {% for project in site.data.projects %}
     <div class="row mb-4">
+      <div class="col-sm-3 text-center">
+          {% unless project.image == "none" %}
+              <!-- Thumbnail trigger fullsize image popup -->
+              <a data-bs-toggle="modal" data-bs-target="#exampleModal{{project.order}}" href="#">
+                  <img src="{{ project.image.url | relative_url }}" class="img-thumbnail" style="width: 200px" alt="{{ project.image.alt }}" />
+              </a>
+
+              <!-- Modal with full size image popup -->
+              <div class="modal fade" id="exampleModal{{project.order}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" style="max-width: fit-content;">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                              <img src="{{ project.image.url | relative_url }}" style="width:100%;" alt="{{ project.image.alt }}" />
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          {% endunless %}
+      </div>
         <div class="col-sm-9">
             <h2>{{ project.name }}</h2>
             <p>
@@ -19,28 +41,6 @@ layout: default
                     {% endif %}
                 {% endfor %}
             </li>
-        </div>
-        <div class="col-sm-3 text-center">
-            {% unless project.image == "none" %}
-                <!-- Thumbnail trigger fullsize image popup -->
-                <a data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">
-                    <img src="{{ project.image.url | relative_url }}" class="img-thumbnail" style="width: 200px" alt="{{ project.image.alt }}" />
-                </a>
-                
-                <!-- Modal with full size image popup -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" style="max-width: fit-content;">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <img src="{{ project.image.url | relative_url }}" style="width:100%;" alt="{{ project.image.alt }}" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {% endunless %}
         </div>
     </div>
 {% endfor %}
