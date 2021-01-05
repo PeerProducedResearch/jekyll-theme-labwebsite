@@ -1,22 +1,15 @@
-<footer class="footer bg-light text-muted">
+<footer class="footer bg-light text-muted text-end">
     <div class="container">
-        <div class="text-end pt-3 pb-1">
-            <a href="#">Back to top</a>
-        </div>
-        <ul class="text-center mb-2 p-0">
-            {% for link in site.data.footerlinks %}
-                <li class="nav-item d-inline-block">
-                    {% if link.type == "email" %}
-                        <a class="nav-link" href="mailto: {{ link.url }}">{{ link.title }}</a>
-                    {% else %}
-                        <a class="nav-link" href="{{ link.url }}">{{ link.title }}</a>
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
-        <div class="text-center mb-3 text-muted">
-            {{ site.time | date: "%Y" }} {{ site.title }}
-        </div>
+          {% for link in site.data.footerlinks %}
+                  {% if link.type == "email" %}
+                      <a href="mailto: {{ link.url }}">{{ link.title }}</a>
+                  {% else %}
+                      <a href="{{ link.url }}">{{ link.title }}</a>
+                  {% endif %}
+          {% endfor %}
+      <div class="text-center">
+          {{ site.time | date: "%Y" }} {{ site.title }}
+      </div>
     </div>
 </footer>
 
