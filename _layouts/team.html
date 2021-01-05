@@ -11,6 +11,7 @@ layout: default
             {% else %}
                 <img src="{{ member.photo.url }}" class="rounded-circle" style="max-width:200px;width:100%;" alt="{{ member.photo.alt }}" />
             {% endif %}
+            <br/>
             <li class="d-inline-block mx-2">
                 {% for link in member.links %}
                     {% if link.type == "email" %}
