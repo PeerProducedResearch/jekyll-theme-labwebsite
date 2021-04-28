@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+<div class="row mb-4">
+  <div class="col-sm-6">
+    <h3>Latest News</h3>
+    {% for post in site.posts %}
+      {% include blog-post.html %}
+    {% endfor %}
+  </div>
+  <div class="col-sm-6">
+    <h3>Upcoming events</h3>
+    <p>
+      This includes conferences or workshops where members our team participate in,
+      as well as publicly accessible events we organize, such as our fortnightly journal clubs.
+    </p>
+
+    <div id='calendar'></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    aspectRatio: 0.8,
+    initialView: 'list',
+    visibleRange: function(currentDate) {
+  // Generate a new date for manipulating in the next step
+  var startDate = new Date(currentDate.valueOf());
+  var endDate = new Date(currentDate.valueOf());
+
+  // Adjust the start & end dates, respectively
+  startDate.setDate(startDate.getDate() - 0); // Today
+  endDate.setDate(endDate.getDate() + 60); // Up to 60 days in future
+
+  return { start: startDate, end: endDate };
+  },
+    headerToolbar: {
+      left: '',
+      center: '',
+      right: ''
+    },
+
+    displayEventTime: true,
+
+    googleCalendarApiKey: '{{site.gcal_API_key}}',
+
+    // Adds actual calendar from Google Calendar
+    events: '{{site.gcal_URL}}',
+
+    eventClick: function(arg) {
+
+      // opens events in a popup window
+      window.open(arg.event.url, '_blank', 'width=700,height=600');
+
+      // prevents current tab from navigating
+      arg.jsEvent.preventDefault();
+    }
+
+  });
+
+  calendar.render();
+});
+</script>
