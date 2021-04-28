@@ -11,7 +11,7 @@
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 order-3">
                             <!-- display links in navbar except for home (as it is already displayed on the left of the header)-->
                             {% for page in sorted_pages %}
-                                {% if forloop.index > 4 and forloop.index < 9 %}
+                                {% if forloop.index > 4 and forloop.index < 10 %}
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{page.url}}">{{page.title}}</a>
                                 </li>
