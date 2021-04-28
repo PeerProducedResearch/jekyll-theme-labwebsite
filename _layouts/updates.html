@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var endDate = new Date(currentDate.valueOf());
 
   // Adjust the start & end dates, respectively
-  startDate.setDate(startDate.getDate() - 0); // One day in the past
-  endDate.setDate(endDate.getDate() + 60); // Two days into the future
+  startDate.setDate(startDate.getDate() - 0); // Today
+  endDate.setDate(endDate.getDate() + 60); // Up to 60 days in future
 
   return { start: startDate, end: endDate };
   },
@@ -44,14 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
       right: ''
     },
 
-    displayEventTime: true, // don't show the time column in list view
+    displayEventTime: true,
 
-    // THIS KEY WON'T WORK IN PRODUCTION!!!
-    // To make your own Google API key, follow the directions here:
-    // http://fullcalendar.io/docs/google_calendar/
     googleCalendarApiKey: '{{site.gcal_API_key}}',
 
-    // US Holidays
+    // Adds actual calendar from Google Calendar
     events: '{{site.gcal_URL}}',
 
     eventClick: function(arg) {
