@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
     aspectRatio: 0.8,
-    initialView: 'list',
+    initialView: 'dayGridMonth',
     visibleRange: function(currentDate) {
   // Generate a new date for manipulating in the next step
   var startDate = new Date(currentDate.valueOf());
@@ -39,9 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
   return { start: startDate, end: endDate };
   },
     headerToolbar: {
-      left: '',
-      center: '',
-      right: ''
+      left: 'prev,next',
+      center: 'title',
+      right: 'dayGridMonth,list today'
     },
 
     displayEventTime: true,
